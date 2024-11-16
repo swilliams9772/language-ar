@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0">
+    <entity name="CDCommunityEvent" representedClassName="CDCommunityEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descriptionText" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageURL" optional="YES" attributeType="URI"/>
+        <attribute name="location" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="CDCommunityPost" representedClassName="CDCommunityPost" syncable="YES" codeGenerationType="class">
+        <attribute name="authorImageURL" optional="YES" attributeType="URI"/>
+        <attribute name="authorName" attributeType="String"/>
+        <attribute name="content" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="likes" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDComment" inverseName="post" inverseEntity="CDComment"/>
+    </entity>
+    <entity name="CDComment" representedClassName="CDComment" syncable="YES" codeGenerationType="class">
+        <attribute name="authorName" attributeType="String"/>
+        <attribute name="content" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCommunityPost" inverseName="comments" inverseEntity="CDCommunityPost"/>
+    </entity>
+    <entity name="CDLearningProgress" representedClassName="CDLearningProgress" syncable="YES" codeGenerationType="class">
+        <attribute name="activity" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="language" attributeType="String"/>
+        <attribute name="progress" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+</model> 
